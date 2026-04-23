@@ -29,10 +29,10 @@ extension Color {
 
 extension NSColor {
     convenience init(hex: String) {
-        if let rgbColor = self.colorUsingColorSpace(.sRGB) {
-            self.init(cgColor: rgbColor.cgColor)
-        } else {
+        guard let rgbColor = self.usingColorSpace(.sRGB) else {
             self.init(red: 0, green: 0, blue: 0, alpha: 1)
+            return
         }
+        self.init(cgColor: rgbColor.cgColor)
     }
 }
