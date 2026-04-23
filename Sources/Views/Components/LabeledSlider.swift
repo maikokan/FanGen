@@ -28,13 +28,12 @@ struct LabeledSlider: View {
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("\(value, specifier: "%.1f")\(unit)")
+                Text("\(String(format: "%.1f", value))\(unit)")
                     .font(.system(size: 12, weight: .regular, design: .monospaced))
                     .foregroundColor(.primary)
             }
 
             Slider(value: $value, in: range, step: step)
-                .sliderStyle(.accessory)
         }
     }
 }
@@ -73,7 +72,6 @@ struct LabeledIntSlider: View {
                 get: { Double(value) },
                 set: { value = Int($0) }
             ), in: Double(range.lowerBound)...Double(range.upperBound), step: 1)
-                .sliderStyle(.accessory)
         }
     }
 }

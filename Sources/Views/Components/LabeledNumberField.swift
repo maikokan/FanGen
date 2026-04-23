@@ -28,7 +28,7 @@ struct LabeledNumberField: View {
                 .foregroundColor(.secondary)
 
             TextField("", value: $value, format: .number)
-                .textFieldStyle(.bordered)
+                .textFieldStyle(.roundedBorder)
                 .frame(width: 70)
                 .font(.system(size: 12, design: .monospaced))
                 .onChange(of: value) { _, newValue in
@@ -73,7 +73,7 @@ struct LabeledIntField: View {
                 .foregroundColor(.secondary)
 
             TextField("", value: $value, format: .number)
-                .textFieldStyle(.bordered)
+                .textFieldStyle(.roundedBorder)
                 .frame(width: 60)
                 .font(.system(size: 12, design: .monospaced))
                 .onChange(of: value) { _, newValue in
