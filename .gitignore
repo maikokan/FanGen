@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+
+# SPM
+.packages
+.swiftpm/
+
+# OpenSCAD temp files
+*.stl
+*.scad
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log

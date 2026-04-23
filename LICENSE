@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Michael
+Copyright (c) 2024 FanGen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+This software uses OpenSCAD (https://openscad.org) as an external dependency.
+OpenSCAD is licensed under the GNU General Public License v2 (GPL v2).
+OpenSCAD is not bundled with this software; users must install OpenSCAD separately.
