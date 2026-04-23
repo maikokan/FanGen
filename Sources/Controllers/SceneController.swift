@@ -70,16 +70,10 @@ final class SceneController: ObservableObject {
 
         fanNode?.removeFromParentNode()
 
-        let loader = SCNScene(url: url, options: [
+        let loadedScene = try SCNScene(url: url, options: [
             .checkConsistency: true,
             .flattenScene: false
         ])
-
-        guard let loadedScene = loader else {
-            throw NSError(domain: "SceneController", code: 1, userInfo: [
-                NSLocalizedDescriptionKey: "Failed to load STL file"
-            ])
-        }
 
         let containerNode = SCNNode()
         containerNode.name = "fanContainer"
@@ -131,8 +125,8 @@ final class SceneController: ObservableObject {
         let sizeY = maxBound.y - minBound.y
         let sizeZ = maxBound.z - minBound.z
         let maxSize = max(sizeX, max(sizeY, sizeZ))
-        let targetSize: Float = 100.0
-        let scale = targetSize / maxSize
+        let targetSize: CGFloat = 100.0
+        let scale = CGFloat(targetSize / maxSize)
 
         node.position = SCNVector3(x: -centerX * scale, y: -centerY * scale, z: -centerZ * scale)
         node.scale = SCNVector3(x: scale, y: scale, z: scale)

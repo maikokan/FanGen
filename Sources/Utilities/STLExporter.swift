@@ -42,23 +42,22 @@ class STLExporter {
     private func extractVertexData(from geometry: SCNGeometry) -> [SCNVector3] {
         var vertices: [SCNVector3] = []
 
-        for source in geometry.sources {
-            if source.semantic == .vertex {
-                if let data = source.data as Data? {
-                    let stride = source.bytesPerComponent * source.componentsPerCoordinate
+        let vertexSource = geometry.sources.first { $0.semantic == .vertex }
+        guard let source = vertexSource else { return [] }
 
-                    data.withUnsafeBytes { buffer in
-                        var offset = 0
-                        while offset < buffer.count {
-                            let x = buffer.load(fromByteOffset: offset, as: Float.self)
-                            let y = buffer.load(fromByteOffset: offset + 4, as: Float.self)
-                            let z = buffer.load(fromByteOffset: offset + 8, as: Float.self)
-                            vertices.append(SCNVector3(x: x, y: y, z: z))
-                            offset += stride
-                        }
-                    }
-                }
-            }
+        let data = source.data
+        let floatCount = data.count / MemoryLayout<Float>.size
+        var floatArray = [Float](repeating: 0, count: floatCount)
+        _ = floatArray.withUnsafeMutableBytes { buffer in
+            data.copyBytes(to: buffer)
+        }
+
+        let vertexCount = floatCount / 3
+        for i in 0..<vertexCount {
+            let x = CGFloat(floatArray[i * 3])
+            let y = CGFloat(floatArray[i * 3 + 1])
+            let z = CGFloat(floatArray[i * 3 + 2])
+            vertices.append(SCNVector3(x: x, y: y, z: z))
         }
 
         return vertices

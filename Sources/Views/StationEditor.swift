@@ -49,7 +49,6 @@ struct StationEditor: View {
                     get: { station.radius },
                     set: { station.radius = $0 }
                 ), in: 0...1, step: 0.05)
-                    .sliderStyle(.accessory)
             }
 
             VStack(spacing: 8) {
@@ -137,7 +136,7 @@ struct StationEditor: View {
                         get: { profile.code },
                         set: { station.profile = .naca(NACAProfile(code: $0, angleOffset: profile.angleOffset)) }
                     ))
-                    .textFieldStyle(.bordered)
+                    .textFieldStyle(.roundedBorder)
                     .frame(width: 60)
                     .font(.system(size: 12, design: .monospaced))
                 }

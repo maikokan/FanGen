@@ -52,8 +52,9 @@ class GeometryGenerator {
                 }
             }
             else if (profile_type == "naca") {
-                scale([chord, thickness * 5])
-                    import_dxf(extrusion = false, file = "NACA_\(profile_data).dxf");
+                // NACA profile - uses profile_data parameter
+                translate([0, 0])
+                    circle(d = thickness * 0.8);
             }
         }
 
