@@ -3,7 +3,7 @@ import SceneKit
 import Combine
 
 @MainActor
-class SceneController: NSObject, ObservableObject {
+final class SceneController: ObservableObject {
     @Published var scene: SCNScene
     @Published var fanNode: SCNNode?
     @Published var isLoading: Bool = false
@@ -13,7 +13,6 @@ class SceneController: NSObject, ObservableObject {
 
     init() {
         scene = SCNScene()
-        super.init()
         setupScene()
     }
 
