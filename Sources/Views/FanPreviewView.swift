@@ -1,4 +1,5 @@
 import SwiftUI
+import SceneKit
 
 struct FanPreviewView: NSViewRepresentable {
     let sceneController: SceneController

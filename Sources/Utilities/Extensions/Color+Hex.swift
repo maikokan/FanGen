@@ -29,10 +29,25 @@ extension Color {
 
 extension NSColor {
     convenience init(hex: String) {
-        guard let rgbColor = self.usingColorSpace(.sRGB) else {
-            self.init(red: 0, green: 0, blue: 0, alpha: 1)
-            return
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let r, g, b: UInt64
+        switch hex.count {
+        case 6:
+            r = int >> 16
+            g = int >> 8 & 0xFF
+            b = int & 0xFF
+        default:
+            r = 0
+            g = 0
+            b = 0
         }
-        self.init(cgColor: rgbColor.cgColor)
+        self.init(
+            red: CGFloat(r) / 255.0,
+            green: CGFloat(g) / 255.0,
+            blue: CGFloat(b) / 255.0,
+            alpha: 1.0
+        )
     }
 }

@@ -13,7 +13,7 @@ class SceneController: NSObject, ObservableObject {
 
     init() {
         scene = SCNScene()
-        super.super.init()
+        super.init()
         setupScene()
     }
 
